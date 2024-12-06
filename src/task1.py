@@ -3,8 +3,9 @@ from collections import Counter
 
 def part1():
     with open("./data/data1.txt") as f:
-        data = [l.strip() for l in f]
-    
+        data = [line.strip() for line in f.readlines()]
+        # data = [l.strip() for l in f]
+
     first = []
     second = []
     diff = 0
@@ -34,7 +35,7 @@ def part2():
         second.append(int(line.split()[1]))
         
     count = {}
-    # count = Counter(second)
+    
     # for i in range(len(second)):
     #     count[second[i]] = count[second[i]] + 1 if second[i] in count else 1
     # print(count)
@@ -50,9 +51,10 @@ def part2():
         similarity+= e * count.get(e, 0)
     
     print(similarity)
+    
         
        
 if __name__ == "__main__":        
-    #part1()
-    part2()
-        
+    part1()
+    #part2()
+            
