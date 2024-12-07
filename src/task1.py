@@ -2,6 +2,15 @@ from collections import Counter
 
 
 def part1():
+    
+    # temp = '''3   4
+    #         4   3
+    #         2   5
+    #         1   3
+    #         3   9
+    #         3   3'''
+    # data = temp.split('\n')
+            
     with open("./data/data1.txt") as f:
         data = [line.strip() for line in f.readlines()]
         # data = [l.strip() for l in f]
