@@ -1,7 +1,5 @@
 def part1():
-    
     rules, pages = setup()
-    
     sum = 0
     for page in pages:
         print(page)
@@ -10,7 +8,16 @@ def part1():
 
     print(sum)
     
-
+def part2():
+    rules, pages = setup()
+    sum = 0 
+    
+    for page in pages:
+        if not rules_met(page, rules):
+            update = correct_order(page, rules)
+        sum += int(update[len(update) // 2])
+    print(sum)    
+            
 def setup():
     with open ('./data/data5.txt', 'r') as f:
         data = f.read()
@@ -37,9 +44,19 @@ def rules_met(page, rules):
                 return False
     return True
 
-            
+def correct_order(page, rules):
+    for i in range(len(page)):
+        for j in range(i+1 , len(page)):
+            # just swap the pages that are not in correct order 
+            if page[i] in rules and page[j] in rules[page[i]]:
+                temp = page[i]
+                page[i] = page[j]
+                page[j] = temp
+    return page 
+    
+                
 # example = 5 | 3
 # pages = [2,3,4,5,6,7]
 
 if __name__ == "__main__":
-    part1()
+    part2()
